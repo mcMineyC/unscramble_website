@@ -8,7 +8,7 @@ char_keys = tuple(_ for _ in letters + '!@#$%^&*()`~-_=+[]{} ')
 re.compile(r'^[A-Z]\t', re.MULTILINE)
 frequency = []
 
-my_file = open('Misc_projects/unscramble/Eli_cipher/message.txt', 'r')
+my_file = open('Eli_cipher/message.txt', 'r')
 message = my_file.read()
 my_file.close()
 
@@ -26,7 +26,7 @@ cipher = {
  '#': 'N', #copy error?
  '$': '',
  '%': '-',
- '&': 'U', #EndOfTransmission?
+ '&': '', #EndOfTransmission?
  '(': '-',
  ')': '-',
  '*': '-',
@@ -54,7 +54,7 @@ cipher = {
  'm': 'S',
  'n': 'O',
  'o': 'C',
- 'p': 'D', #D?
+ 'p': 'D', #D and P?
  'q': 'N',
  'r': 'T',
  's': 'M',
