@@ -2,5 +2,5 @@ sharps = tuple('AEFHIKLMNTVWXYZ')
 rounds = tuple('BCDGJOPQRSU')
 everything = tuple('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
-encrypted = ('0K', '0W', 'E', 'K', '0Y', 'N', '0X', '0V', 'Y', 'L', 'V', '0I', '0H', '0M', '0E', 'F', 'Z', '0F', 'I', 'X', 'H', 'W', 'A', 'M', '0L', 'T', '0N', '0A', '0T', '0Z')
+encrypted = ('K', 'W', '0E', '0K', 'Y', '0N', 'X', 'V', '0Y', '0L', '0V', 'I', 'H', 'M', 'E', '0F', '0Z', 'F', '0I', '0X', '0H', '0W', '0A', '0M', 'L', '0T', 'N', 'A', 'T', 'Z')
 decrypted = tuple('abcdefghijklmnopqrstuvwxyz.,! ')
