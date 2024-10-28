@@ -15,20 +15,26 @@ for letter in message:
 #        code_letter = '0' + code_letter[1]
     output += code_letter
 
-print(len(output))
 
 
-#add bonus double rounds for "fun"
+#insert bonus double rounds for "fun"
 for i in range(len(output), -1, -1):
     if random.randint(1, 5) == 1:
         #assert output[:i] + output[i:] == output
         output = output[:i] + random.choice(constants.rounds) + random.choice(constants.rounds) + output[i:] #inserts 2 random round chars
 
 
-print(len(output))
 
-#TODO add bonus spaces for more 'fun'
-
+#insert bonus spaces for more 'fun'
+word_sizes = [1, 2, 2] + [3,]*3
+counter = len(output)
+while True:
+    myInt = random.choice(word_sizes)
+    counter -= myInt
+    if counter < 0: break
+    output = output[:counter] + ' ' + output[counter:]
+    print(counter)
+    
 
 
 myFile = open('./Sharp_cipher/output.txt', 'w')
