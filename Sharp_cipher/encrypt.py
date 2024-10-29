@@ -26,15 +26,14 @@ for i in range(len(output), -1, -1):
 
 
 #insert bonus spaces for more 'fun'
-word_sizes = [1, 2, 2] + [3,]*3
 counter = len(output)
 while True:
-    myInt = random.choice(word_sizes)
+    myInt = random.choice(constants.word_sizes)
     counter -= myInt
     if counter < 0: break
     output = output[:counter] + ' ' + output[counter:]
-    print(counter)
-    
+    #print(myInt,counter)
+
 
 
 myFile = open('./Sharp_cipher/output.txt', 'w')
