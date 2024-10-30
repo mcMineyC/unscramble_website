@@ -12,6 +12,6 @@ for letter in constants.message:
     output += "_"
     #output += letter
 
-afile = open('Misc_projects/unscramble/Eli_cipher/translated.txt', 'w')
+afile = open('./Eli_cipher/translated.txt', 'w')
 afile.write(output)
 afile.close()
