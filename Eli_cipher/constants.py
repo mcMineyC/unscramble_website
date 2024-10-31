@@ -26,7 +26,7 @@ cipher = {
  '#': 'N', #copy error?
  '$': '',
  '%': '-',
- '&': '', #EndOfTransmission?
+ '&': ',', #double char, include space?
  '(': '-',
  ')': '-',
  '*': '-',
