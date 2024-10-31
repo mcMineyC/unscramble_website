@@ -57,33 +57,35 @@ for thing in range(5):
 coord = {'x':4,'y':4}#start position
 #spiral kickstart
 order.append((coord['x'], coord['y']))#center
-order.append((coord['x'], coord['y']+1))#move down 1
-#order.append((coord['x']-1, coord['y']-1))#move left 1
-coord['x'] -= 1
+order.append((coord['x']+1, coord['y']))#move right 1
+coord['x'] += 1
 coord['y'] += 1
 
 size = 1
 for _ in range(4):
     size += 1
-    #up
-    for daY in range(coord['y'], coord['y']-size, -1):
-        order.append((coord['x'],daY))
-    coord['y'] -= size
-    #right
-    for daX in range(coord['x'], coord['x']+size):
-        order.append((daX, coord['y']))
-    coord['x'] += size
-    size += 1
-    #down
-    for daY in range(coord['y'], coord['y']+size):
-        order.append((coord['x'],daY))
-    coord['y'] += size
     #left
     for daX in range(coord['x'], coord['x']-size, -1):
         order.append((daX, coord['y']))
     coord['x'] -= size
+    #up
+    for daY in range(coord['y'], coord['y']-size, -1):
+        order.append((coord['x'],daY))
+    coord['y'] -= size
 
+    size += 1
+    #right
+    for daX in range(coord['x'], coord['x']+size):
+        order.append((daX, coord['y']))
+    coord['x'] += size
+    #down
+    for daY in range(coord['y'], coord['y']+size):
+        order.append((coord['x'],daY))
+    coord['y'] += size
 
+for daX in range(coord['x'], coord['x']-size, -1):
+        order.append((daX, coord['y']))
+        coord['x'] -= size
 
 print(order)
 
