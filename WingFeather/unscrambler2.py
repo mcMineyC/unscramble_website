@@ -2,9 +2,8 @@
 
 import itertools, json, copy
 
-file_obj = open('Misc_projects/unscramble/word_bank.json', 'r')
-all_words = json.load(file_obj)
-file_obj.close()
+with open('Misc_projects/unscramble/word_bank.json', 'r') as file_obj:
+    all_words = json.load(file_obj)
 
 letters = []
 for _ in 'KLNCUOHTDEITEHOCW': letters.append(_)
@@ -86,9 +85,8 @@ def find_all(): #TODO may have some local/global variable issues
         print('saving phrase list to file...')
         output = []
         for item in phrases_found: output.append(list(item))
-        file_obj = open("Misc_projects/unscramble/output_phrases%s.json" % letter_count, "w")
-        json.dump(output, file_obj)
-        file_obj.close()
+        with open("Misc_projects/unscramble/output_phrases%s.json" % letter_count, "w") as file_obj:
+            json.dump(output, file_obj)
 
 
 #accepts specific word, and searches for all phrases that contain that word. This func is a slightly modded version of find_all
@@ -117,14 +115,8 @@ def find_specific(fsDesiredWord):
         print('saving phrase list (%s) to file...' % letter_count)
         output = []
         for item in phrases_found: output.append(list(item))
-        file_obj = open("Misc_projects/unscramble/output_phrases_specific%s.json" % letter_count, "w")
-        json.dump(output, file_obj)
-        file_obj.close()
-
-
-
-
-
+        with open("Misc_projects/unscramble/output_phrases_specific%s.json" % letter_count, "w") as file_obj:
+            json.dump(output, file_obj)
 
 
 

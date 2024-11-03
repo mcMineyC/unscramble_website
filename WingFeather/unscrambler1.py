@@ -49,9 +49,8 @@ end = int(time.time())
 
 
 print('saving word list to file...')
-file_obj = open("Misc_projects/unscramble/word_bank.json", "w")
-json.dump(all_words, file_obj)
-file_obj.close()
+with open("Misc_projects/unscramble/word_bank.json", "w") as file_obj:
+    json.dump(all_words, file_obj)
 #There ya go, now you can just open it in unscrambler2.py :)
 # file_obj = open('word_save_bank.py', 'w')
 # file_obj.write("all_words = \"" + pprint.pformat(all_words)+"\"")

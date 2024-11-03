@@ -25,7 +25,5 @@ print()
 pprint.pprint(ordered_frequencies)
 """
 
-somefile = open('Misc_projects/unscramble/Eli_cipher/message_frequencies.txt', 'w')
-somefile.write(pprint.pformat(ordered_frequencies))
-somefile.close()
-
+with open('Misc_projects/unscramble/Eli_cipher/message_frequencies.txt', 'w') as somefile:
+    somefile.write(pprint.pformat(ordered_frequencies))

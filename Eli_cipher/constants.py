@@ -8,9 +8,8 @@ char_keys = tuple(_ for _ in letters + '!@#$%^&*()`~-_=+[]{} ')
 re.compile(r'^[A-Z]\t', re.MULTILINE)
 frequency = []
 
-my_file = open('Eli_cipher/message.txt', 'r')
-message = my_file.read()
-my_file.close()
+with open('Eli_cipher/message.txt', 'r') as my_file:
+    message = my_file.read()
 
 '''
 trash = {}

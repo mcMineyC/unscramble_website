@@ -1,9 +1,8 @@
 import constants
 import random
 
-myFile = open('./Sharp_cipher/input.txt', 'r')
-message = myFile.read().lower()
-myFile.close()
+with open('./Sharp_cipher/input.txt', 'r') as myFile:
+    message = myFile.read().lower()
 
 output = ''
 
@@ -36,6 +35,5 @@ while True:
 
 
 
-myFile = open('./Sharp_cipher/output.txt', 'w')
-myFile.write(output) #TODO fill
-myFile.close()
+with open('./Sharp_cipher/output.txt', 'w') as myFile:
+    myFile.write(output) #TODO fill
