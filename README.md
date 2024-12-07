@@ -15,5 +15,4 @@ This message encoding system is simple: just add the consecutive digits of Pi to
 ### Sharp_Cipher
 This encryption system is a bit more complicated. "Round" letters are letters whose uppercase form contains a curve. They are represented in the key as "0". Round characters act like a shift key, changing the sharp letters into something else. In a coded message, "K" by itself means "a", but when preceded by any round letter it is "D". Whitespace characters in a coded message mean nothing, and a double "0" cancels out.
 
-## Concerning the singleFile_versions branch:
-This branch was created for the convenience of non-coders. Everything you need to encrypt or decrypt a message is contained in a single file, as opposed to having a constants file, input file, output file, etc.
+## See also my encryption_website repo: https://klncuohtdeitehocw.vercel.app/
