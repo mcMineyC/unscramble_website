@@ -5,7 +5,7 @@ message = md5("Hello world!".encode()).hexdigest().upper()
 
 print(message)
 
-myBinary = base_to_base(message, hexadecimal, binary)
+myBinary = base_to_base(message, hexadecimal, binary).zfill(128)
 
 for i in range(0, len(myBinary), 8): # prints one byte at a time.
     print(myBinary[i:i+8])
