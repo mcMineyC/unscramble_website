@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Eli Cipher</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "JetBrains Mono", monospace;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f5f5f5;
+            }
+            .box {
+                margin: 20px 0;
+            }
+            textarea {
+                width: 100%;
+                height: 150px;
+                padding: 10px;
+                box-sizing: border-box;
+                font-family: "JetBrains Mono", monospace;
+                margin-top: 5px;
+            }
+            h1 {
+                color: #333;
+            }
+            label {
+                font-weight: bold;
+                color: #444;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Eli Anagram Cipher</h1>
+        <div class="box">
+            <label>Plain Text</label>
+            <textarea id="plain"></textarea>
+        </div>
+        <div class="box">
+            <label>Encrypted Text</label>
+            <textarea id="encrypted"></textarea>
+        </div>
+
+        <script>
+            const plain = document.getElementById("plain");
+            const encrypted = document.getElementById("encrypted");
+
+            function shuffleWord(word) {
+                return word.split("").sort().join("");
+            }
+
+            function processText(text, encrypt) {
+                return text
+                    .split(/\b/)
+                    .map((word) => {
+                        if (/^[a-zA-Z]+$/.test(word)) {
+                            return encrypt ? shuffleWord(word) : word;
+                        }
+                        return word;
+                    })
+                    .join("");
+            }
+
+            plain.addEventListener("input", (e) => {
+                encrypted.value = processText(e.target.value, true);
+            });
+
+            encrypted.addEventListener("input", (e) => {
+                plain.value = e.target.value; // Can't decrypt without knowing original word order
+            });
+        </script>
+    </body>
+</html>

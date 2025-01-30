@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Pi Cipher</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "JetBrains Mono", monospace;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .box {
+                width: 100%;
+            }
+            textarea {
+                width: 100%;
+                height: 150px;
+                margin: 10px 0;
+                padding: 10px;
+                box-sizing: border-box;
+                font-family: "JetBrains Mono", monospace;
+            }
+            h1,
+            h2 {
+                text-align: center;
+            }
+            @media (max-width: 600px) {
+                body {
+                    padding: 10px;
+                }
+                textarea {
+                    height: 120px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Pi Cipher Encoder/Decoder</h1>
+        <div class="container">
+            <div class="box">
+                <h2>Plain Text</h2>
+                <textarea
+                    id="plaintext"
+                    placeholder="Enter text to encrypt..."
+                ></textarea>
+            </div>
+            <div class="box">
+                <h2>Encrypted Text</h2>
+                <textarea
+                    id="encrypted"
+                    placeholder="Enter text to decrypt..."
+                ></textarea>
+            </div>
+        </div>
+
+        <script>
+            // First 1000 digits of Pi (you can extend this if needed)
+            const PI =
+                "3141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146951941511609433057270365759591953092186117381932611793105118548074462379962749567351885752724891227938183011949129833673362440656643086021394946395224737190702179860943702770539217176293176752384674818467669405132000568127145263560827785771342757789609173637178721468440901224953430146549585371050792279689258923542019956112129021960864034418159813629774771309960518707211349999998";
+
+            const lower_let = "abcdefghijklmnopqrstuvwxyz";
+            const upper_let = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            function encrypt(char, piDigit) {
+                if (lower_let.includes(char)) {
+                    return lower_let[
+                        (lower_let.indexOf(char) + parseInt(piDigit)) % 26
+                    ];
+                } else if (upper_let.includes(char)) {
+                    return upper_let[
+                        (upper_let.indexOf(char) + parseInt(piDigit)) % 26
+                    ];
+                }
+                return char;
+            }
+
+            function decrypt(char, piDigit) {
+                if (lower_let.includes(char)) {
+                    return lower_let[
+                        (lower_let.indexOf(char) - parseInt(piDigit) + 26) % 26
+                    ];
+                } else if (upper_let.includes(char)) {
+                    return upper_let[
+                        (upper_let.indexOf(char) - parseInt(piDigit) + 26) % 26
+                    ];
+                }
+                return char;
+            }
+
+            function processText(text, operation) {
+                let result = "";
+                let piIndex = 0;
+
+                for (let char of text) {
+                    if (
+                        (lower_let.includes(char) ||
+                            upper_let.includes(char)) &&
+                        piIndex < PI.length
+                    ) {
+                        result += operation(char, PI[piIndex]);
+                        piIndex++;
+                    } else {
+                        result += char;
+                    }
+                }
+                return result;
+            }
+
+            const plaintextArea = document.getElementById("plaintext");
+            const encryptedArea = document.getElementById("encrypted");
+
+            plaintextArea.addEventListener("input", (e) => {
+                encryptedArea.value = processText(e.target.value, encrypt);
+            });
+
+            encryptedArea.addEventListener("input", (e) => {
+                plaintextArea.value = processText(e.target.value, decrypt);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Sharp Cipher</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "JetBrains Mono", monospace;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f5f5f5;
+            }
+            .box {
+                margin: 20px 0;
+            }
+            textarea {
+                width: 100%;
+                height: 150px;
+                padding: 10px;
+                box-sizing: border-box;
+                font-family: "JetBrains Mono", monospace;
+                margin-top: 5px;
+            }
+            h1 {
+                color: #333;
+            }
+            label {
+                font-weight: bold;
+                color: #444;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Sharp Cipher</h1>
+        <div class="box">
+            <label>Plain Text</label>
+            <textarea id="plain"></textarea>
+        </div>
+        <div class="box">
+            <label>Sharp Cipher Text</label>
+            <textarea id="sharp"></textarea>
+        </div>
+
+        <script>
+            const plain = document.getElementById("plain");
+            const sharp = document.getElementById("sharp");
+
+            const sharps = "AEFHIKLMNTVWXYZ";
+            const rounds = "BCDGJOPQRSU";
+
+            function encrypt(text) {
+                return text
+                    .split("")
+                    .map((char) => {
+                        if (/[a-z]/.test(char)) {
+                            const isRound = Math.random() < 0.5;
+                            return (
+                                (isRound
+                                    ? rounds[
+                                          Math.floor(
+                                              Math.random() * rounds.length,
+                                          )
+                                      ]
+                                    : "") +
+                                sharps[
+                                    Math.floor(Math.random() * sharps.length)
+                                ]
+                            );
+                        }
+                        return char;
+                    })
+                    .join("");
+            }
+
+            plain.addEventListener("input", (e) => {
+                sharp.value = encrypt(e.target.value.toLowerCase());
+            });
+
+            sharp.addEventListener("input", (e) => {
+                // Decryption would require the actual mapping table
+                plain.value = "Decryption requires mapping table";
+            });
+        </script>
+    </body>
+</html>
