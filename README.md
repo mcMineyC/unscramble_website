@@ -1,4 +1,4 @@
-# This repo is for my message encryption and decryption programs.
+# This repo is for [Mixel-MurP-427's](https://github.com/Mixel-MurP-427) message encryption and decryption programs.
 There are currently 4 different subfolders, each with a different message encryption type.
 
 ### Wingfeather
